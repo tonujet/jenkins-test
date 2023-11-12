@@ -19,14 +19,46 @@ pipeline {
     }
 
     stages {
+
+        stage('init') {
+            steps {
+                script {
+                    test = load "test.groovy"
+                }
+            }
+        }
+
         stage('build') {
             when {
                 expression {
                     BRANCH_NAME != "main"
                 }
             }
+
             steps {
                 echo "Branch: ${BRANCH_NAME}"
+
+            }
+        }
+
+
+
+
+        stage('delpoy') {
+
+            script {
+                test.buildApp()
+            }
+
+            steps {
+                echo 'Hello deploy'
+            }
+        }
+
+        stage('test') {
+            steps {
+                echo "Hello ${DISABLE_AUTH}"
+                echo "Hello ${DB_ENGINE}"
             }
         }
 
@@ -41,20 +73,6 @@ pipeline {
                 echo "Choice: ${params.CHOICE}"
 
                 echo "Password: ${params.PASSWORD}"
-            }
-        }
-
-
-        stage('delpoy') {
-            steps {
-                echo 'Hello deploy'
-            }
-        }
-
-        stage('test') {
-            steps {
-                echo "Hello ${DISABLE_AUTH}"
-                echo "Hello ${DB_ENGINE}"
             }
         }
 
