@@ -12,5 +12,11 @@ pipeline {
                 echo 'Hello deploy'
             }
         }
+
+        stage('test') {
+            steps {
+                node --version
+            }
+        }
     }
 }
