@@ -7,12 +7,14 @@ pipeline {
     }
     
     stages {
-
         stage('build') {
             when {
                 expression {
                     BRANCH_NAME == "main"
                 }
+            }
+            steps {
+                echo "Branch: ${BRANCH_NAME}"
             }
         }
 
