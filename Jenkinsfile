@@ -7,16 +7,7 @@ pipeline {
     }
     
     stages {
-        stage('build') {
-            when {
-                expression{
-                    env.BRANCH_NAME != main
-                }
-            }
-            steps {
-                echo 'Hello build'
-            }
-        }
+
 
         stage('delpoy') {
             steps {
