@@ -5,7 +5,7 @@ pipeline {
         DISABLE_AUTH = 'true'
         DB_ENGINE    = 'sqlite'
     }
-    
+
     stages {
         stage('build') {
             when {
@@ -28,6 +28,12 @@ pipeline {
             steps {
                 echo "Hello ${DISABLE_AUTH}"
                 echo "Hello ${DB_ENGINE}"
+            }
+        }
+
+        post {
+            always {
+                echo 'I will always say Hello again!'
             }
         }
     }
