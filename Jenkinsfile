@@ -37,7 +37,6 @@ pipeline {
 
             steps {
                 echo "Branch: ${BRANCH_NAME}"
-
             }
         }
 
@@ -46,11 +45,12 @@ pipeline {
 
         stage('delpoy') {
 
-            script {
-                test.buildApp()
-            }
+
 
             steps {
+                script {
+                     test.buildApp()
+                }
                 echo 'Hello deploy'
             }
         }
