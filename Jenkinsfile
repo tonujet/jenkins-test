@@ -6,6 +6,10 @@ pipeline {
         DB_ENGINE    = 'sqlite'
     }
 
+    triggers {
+        pollSCM: '*/1 * * * *'
+    }
+
     parameters {
             string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
 
