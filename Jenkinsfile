@@ -1,13 +1,13 @@
 pipeline {
     agent any
-    
+
+    triggers {
+        pollSCM '*/1 * * * *'
+    }
+
     environment {
         DISABLE_AUTH = 'true'
         DB_ENGINE    = 'sqlite'
-    }
-
-    triggers {
-        pollSCM: '*/1 * * * *'
     }
 
     parameters {
